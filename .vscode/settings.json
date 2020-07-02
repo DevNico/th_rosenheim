@@ -1,0 +1,29 @@
+{
+	"[dart]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": true
+		},
+		"editor.formatOnSave": true,
+		"editor.formatOnType": true,
+		"editor.rulers": [120],
+		"editor.selectionHighlight": false,
+		"editor.suggest.snippetsPreventQuickSuggestions": false,
+		"editor.suggestSelection": "first",
+		"editor.tabCompletion": "onlySnippets",
+		"editor.wordBasedSuggestions": false,
+		"files.insertFinalNewline": true
+	},
+	"dart.lineLength": 120,
+	"cSpell.words": [
+		"examg",
+		"fourweeklyg",
+		"getlocs",
+		"getogs",
+		"holidayg",
+		"pgsc",
+		"threeweeklyg",
+		"ttevent",
+		"twoweeklyg",
+		"weeklyg"
+	]
+}
