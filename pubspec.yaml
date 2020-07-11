@@ -81,6 +81,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: RobotoMono
+      fonts:
+        - asset: assets/fonts/RobotoMono-Regular.ttf
+          weight: 400
     - family: Rubik
       fonts:
         - asset: assets/fonts/Rubik-Light.ttf

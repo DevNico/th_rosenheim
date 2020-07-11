@@ -26,6 +26,8 @@ class SingleTimetableEventDetails extends StatelessWidget {
           _buildInfo(Icons.room, entry.room, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
         if (entry.lectureExtra != '')
           _buildInfo(Icons.info, entry.lectureExtra, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
+        if (entry.lecturerName != '')
+          _buildInfo(Icons.person, entry.lecturerName, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
       ],
     );
   }

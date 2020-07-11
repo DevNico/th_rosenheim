@@ -6,6 +6,7 @@ import 'date_button.dart';
 typedef DateCallback = void Function(DateTime date);
 
 class DateSelector extends StatefulWidget {
+  final DateTime today;
   final DateTime selectedDate;
   final DateTime startDate;
   final DateTime endDate;
@@ -14,6 +15,7 @@ class DateSelector extends StatefulWidget {
 
   DateSelector({
     Key key,
+    @required this.today,
     @required this.selectedDate,
     @required this.startDate,
     @required this.endDate,
@@ -60,15 +62,14 @@ class _DateSelectorState extends State<DateSelector> {
                     .weekStart()
                     .add(Duration(days: 7 * (i - _pageController.initialPage)))
                     .add(Duration(days: index)))
-                .map(
-                  (date) => DateButton(
-                    date: date,
-                    selectedDate: widget.selectedDate,
-                    onDaySelected: (date) {
-                      widget.onDaySelected(date);
-                    },
-                  ),
-                )
+                .map((date) => DateButton(
+                      today: widget.today,
+                      date: date,
+                      selectedDate: widget.selectedDate,
+                      onDaySelected: (date) {
+                        widget.onDaySelected(date);
+                      },
+                    ))
                 .toList(),
           );
         },

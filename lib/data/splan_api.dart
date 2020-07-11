@@ -178,27 +178,37 @@ class SplanApi extends BaseApi {
             : '';
 
         // Time
-        final timeStringRegExp = RegExp(r'(\d\d:\d\d)-(\d\d:\d\d)').firstMatch(element.innerHtml);
+        final timeStringRegExpMatch = RegExp(r'(\d\d:\d\d)-(\d\d:\d\d)').firstMatch(element.innerHtml);
         var startTime, endTime;
-        if (timeStringRegExp != null) {
-          final startTimeParts = timeStringRegExp.group(1).split(':');
+        if (timeStringRegExpMatch != null) {
+          final startTimeParts = timeStringRegExpMatch.group(1).split(':');
           startTime = Duration(hours: int.parse(startTimeParts[0]), minutes: int.parse(startTimeParts[1]));
-          final endTimeParts = timeStringRegExp.group(2).split(':');
+          final endTimeParts = timeStringRegExpMatch.group(2).split(':');
           endTime = Duration(hours: int.parse(endTimeParts[0]), minutes: int.parse(endTimeParts[1]));
         }
+
+        final room = tooltipStrings[3] == '${timeStringRegExpMatch.group(1)}-${timeStringRegExpMatch.group(2)}'
+            ? ''
+            : tooltipStrings[3];
+
+        final lectureShortName = elementStrings[0] == room
+            ? elementStrings[1].replaceAll(RegExp('<sup>.*<\/sup>'), '')
+            : elementStrings[0].replaceAll(RegExp('<sup>.*<\/sup>'), '');
+
+        final lecturerShortName = elementStrings[0] == room ? elementStrings[2] : elementStrings[1];
 
         var timetableEntry;
         if (entryType != EntryType.holiday) {
           timetableEntry = TimetableEntry(
             lectureName: tooltipStrings[0],
-            lectureShortName: elementStrings[1].replaceAll(RegExp('<sup>.*<\/sup>'), ''),
+            lectureShortName: lectureShortName,
             lectureExtra: lectureSubgroup,
             lecturerName: tooltipStrings[1],
-            lecturerShortName: elementStrings[2],
+            lecturerShortName: lecturerShortName,
             planningGroup: tooltipStrings[2],
             startTime: startTime,
             endTime: endTime,
-            room: tooltipStrings[3],
+            room: room,
             entryType: entryType,
           );
         } else {
@@ -212,6 +222,12 @@ class SplanApi extends BaseApi {
             room: '',
             entryType: entryType,
           );
+        }
+
+        if (tooltipStrings[0] == 'Englisch') {
+          logger.d(tooltipStrings);
+          logger.d(elementStrings);
+          logger.d(timetableEntry);
         }
 
         timetable[day].add(timetableEntry);

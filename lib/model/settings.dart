@@ -44,11 +44,13 @@ class Settings extends Equatable {
   List<Object> get props => [semester, course, ...(lectures ?? []), themeMode, locale, initialized];
 
   @override
-  String toString() => '''Settings {
+  String toString() => initialized
+      ? '''Settings {
     semester: $semester,
     course: $course,
     lectures: $lectures,
     locale: $locale,
     themeMode: $themeMode
-  }''';
+  }'''
+      : 'Settings { initialized: false }';
 }

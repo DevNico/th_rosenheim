@@ -22,8 +22,6 @@ class TimetableEntryListTile extends StatelessWidget {
     final theme = Theme.of(context);
     final size = MediaQuery.of(context).size;
 
-    final now = DateTime.now();
-
     if (entries.first.entryType == EntryType.holiday) {
       return RoundedContainer(
         width: size.width - 40,
@@ -45,7 +43,7 @@ class TimetableEntryListTile extends StatelessWidget {
       );
     }
 
-    final isDone = entries.first.endTime.compareTo(Duration(hours: now.hour, minutes: now.minute)) > 0;
+    final isDone = selectedDate.withoutTime().add(entries.first.endTime).isBefore(DateTime.now());
 
     return GestureDetector(
       onTap: () {
@@ -74,6 +72,9 @@ class TimetableEntryListTile extends StatelessWidget {
                     Text(
                       '${entries.first.startTime.stringify()}',
                       style: theme.primaryTextTheme.bodyText1.copyWith(
+                        fontFamily: 'RobotoMono',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
                         fontFeatures: [FontFeature.tabularFigures()],
                       ),
                     ),
@@ -81,6 +82,9 @@ class TimetableEntryListTile extends StatelessWidget {
                     Text(
                       '${entries.first.endTime.stringify()}',
                       style: theme.primaryTextTheme.bodyText1.copyWith(
+                        fontFamily: 'RobotoMono',
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
                         fontFeatures: [FontFeature.tabularFigures()],
                       ),
                     ),
@@ -113,16 +117,17 @@ class TimetableEntryListTile extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
+                                AutoSizeText(
                                   entries.length > 1 ? event.lectureShortName : event.lectureName,
-                                  style: theme.primaryTextTheme.subtitle1
+                                  maxLines: 1,
+                                  style: theme.primaryTextTheme.bodyText1
                                       .copyWith(fontWeight: FontWeight.w500, fontSize: 15),
                                 ),
                                 SizedBox(height: 2),
                                 AutoSizeText(
-                                  '${event.room} | ${entries.length > 1 ? event.lecturerShortName : event.lecturerName}',
+                                  '${event.room != '' ? '${event.room} | ' : ''}${entries.length > 1 ? event.lecturerShortName : event.lecturerName}',
                                   maxLines: 1,
-                                  style: theme.primaryTextTheme.subtitle1.copyWith(fontSize: 15),
+                                  style: theme.primaryTextTheme.bodyText1.copyWith(fontSize: 15),
                                 ),
                               ],
                             ),

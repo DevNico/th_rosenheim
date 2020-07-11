@@ -7,11 +7,13 @@ import '../../utils/date_utils.dart';
 import 'date_selector.dart';
 
 class DateButton extends StatelessWidget {
+  final DateTime today;
   final DateTime date;
   final DateTime selectedDate;
   final DateCallback onDaySelected;
 
   DateButton({
+    @required this.today,
     @required this.date,
     @required this.selectedDate,
     @required this.onDaySelected,
@@ -47,12 +49,13 @@ class DateButton extends StatelessWidget {
         ),
       ],
     );
+
     if (date.weekday < DateTime.saturday) {
       child = Padding(
         padding: const EdgeInsets.all(3),
         child: Material(
           color: Colors.transparent,
-          shape: date.isToday()
+          shape: date.isOnSameDayWith(today)
               ? RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(8)),
                   side: BorderSide(

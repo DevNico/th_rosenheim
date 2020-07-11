@@ -64,12 +64,7 @@ class _TimetableEventDetailsState extends State<TimetableEventDetails> with Sing
             onTap: (_) {
               setState(() {});
             },
-            tabs: <Widget>[
-              for (final event in widget.entries)
-                Tab(
-                  text: event.lectureShortName,
-                ),
-            ],
+            tabs: widget.entries.map((e) => Tab(text: e.lectureShortName)).toList(),
           ),
         _children[_tabController.index],
       ],

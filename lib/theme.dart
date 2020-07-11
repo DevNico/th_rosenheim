@@ -36,6 +36,10 @@ ThemeData get theme {
       color: kLight,
       elevation: 4,
     ),
+    buttonColor: kOrange,
+    buttonTheme: base.buttonTheme.copyWith(
+      buttonColor: kOrange,
+    ),
     cardColor: kLight,
     cardTheme: base.cardTheme.copyWith(
       clipBehavior: Clip.antiAlias,
@@ -74,6 +78,10 @@ ThemeData get darkTheme {
       brightness: Brightness.dark,
       color: kDark,
       elevation: 4,
+    ),
+    buttonColor: kOrange,
+    buttonTheme: base.buttonTheme.copyWith(
+      buttonColor: kOrange,
     ),
     cardColor: kDark,
     cardTheme: base.cardTheme.copyWith(

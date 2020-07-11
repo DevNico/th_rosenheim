@@ -14,9 +14,13 @@ import '../model/splan/timetable_entry.dart';
 import '../theme.dart';
 import '../utils/date_utils.dart';
 import 'additives.dart';
+import 'settings/course_of_studies_settings.dart';
+import 'settings/lecture_settings.dart';
+import 'settings/semester_settings.dart';
 import 'widgets/canteen.dart';
 import 'widgets/date_selector.dart';
 import 'widgets/list_header.dart';
+import 'widgets/rounded_container.dart';
 import 'widgets/timetable.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -38,7 +42,12 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   void initState() {
     super.initState();
-    final now = DateTime.now().toUtc().withoutTime();
+    var now = DateTime.now().toUtc().withoutTime();
+
+    // Jump to next week if it's saturday or sunday.
+    if (now.weekday >= DateTime.saturday) {
+      now = DateTime.now().weekStart().add(Duration(days: 7));
+    }
 
     _selectorKey = ValueKey(now);
     _today = now;
@@ -61,15 +70,54 @@ class _DashboardPageState extends State<DashboardPage> {
             settings.lectures == null ||
             settings.lectures.isEmpty) {
           return Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text(ThTranslations.of(context).settingsTimetableNotConfigured),
-                if (settings.semester == null) Text(ThTranslations.of(context).settingsSemesterNotConfigured),
-                if (settings.course == null) Text(ThTranslations.of(context).settingsCourseNotConfigured),
-                if (settings.lectures == null || settings.lectures.isEmpty)
-                  Text(ThTranslations.of(context).settingsLecturesNotConfigured),
-              ],
+            child: RoundedContainer(
+              margin: EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text(
+                    ThTranslations.of(context).settingsTimetableNotConfigured,
+                    style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 18),
+                  ),
+                  SizedBox(height: 16),
+                  if (settings.semester == null) ...[
+                    Text(
+                      ThTranslations.of(context).settingsSemesterNotConfigured,
+                    ),
+                    SizedBox(height: 16),
+                    RaisedButton(
+                      child: Text(ThTranslations.of(context).settingsSemesterNotConfiguredButton),
+                      onPressed: () =>
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SemesterSettings())),
+                    )
+                  ],
+                  if (settings.semester != null && settings.course == null) ...[
+                    Text(
+                      ThTranslations.of(context).settingsCourseNotConfigured,
+                    ),
+                    SizedBox(height: 16),
+                    RaisedButton(
+                      child: Text(ThTranslations.of(context).settingsCourseNotConfiguredButton),
+                      onPressed: () => Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) => CourseOfStudiesSettings())),
+                    )
+                  ],
+                  if (settings.semester != null &&
+                      settings.course != null &&
+                      (settings.lectures == null || settings.lectures.isEmpty)) ...[
+                    Text(
+                      ThTranslations.of(context).settingsLecturesNotConfigured,
+                    ),
+                    SizedBox(height: 16),
+                    RaisedButton(
+                      child: Text(ThTranslations.of(context).settingsLecturesNotConfiguredButton),
+                      onPressed: () =>
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LectureSettings())),
+                    )
+                  ]
+                ],
+              ),
             ),
           );
         }
@@ -128,6 +176,7 @@ class _DashboardPageState extends State<DashboardPage> {
                         children: <Widget>[
                           DateSelector(
                             key: _selectorKey,
+                            today: _today,
                             startDate: settings.semester.startDate,
                             endDate: settings.semester.endDate,
                             selectedDate: _selectedDate,
