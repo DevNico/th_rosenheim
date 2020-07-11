@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'blocs/bloc_delegate.dart';
+import 'blocs/bloc_observer.dart';
 import 'blocs/canteen/canteen_bloc.dart';
 import 'blocs/settings/settings_bloc.dart';
 import 'blocs/timetable/timetable_bloc.dart';
@@ -18,7 +18,7 @@ void main() async {
   // await initializeDateFormatting('de_DE', null);
 
   // Bloc logging
-  BlocSupervisor.delegate = SimpleBlocDelegate();
+  Bloc.observer = SimpleBlocObserver();
 
   //await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
@@ -42,7 +42,7 @@ class _THRosenheimAppState extends State<THRosenheimApp> {
         BlocProvider(lazy: false, create: (context) => CanteenBloc()),
       ],
       child: BlocBuilder<SettingsBloc, Settings>(
-        condition: (previous, current) => previous.themeMode != current.themeMode || previous.locale != current.locale,
+        buildWhen: (previous, current) => previous.themeMode != current.themeMode || previous.locale != current.locale,
         builder: (context, settings) {
           if (!settings.initialized) {
             return Container(color: kDark);

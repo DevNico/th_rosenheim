@@ -19,11 +19,11 @@ dependencies:
   dio_http_cache: ^0.2.7
 
   # State management
-  bloc: ^4.0.0
-  flutter_bloc: ^4.0.1
+  bloc: ^5.0.0
+  flutter_bloc: ^5.0.0
 
   # Data models
-  equatable: ^1.1.1
+  equatable: ^1.2.2
   json_annotation: ^3.0.1
 
   # Html parsing
@@ -41,9 +41,9 @@ dependencies:
   intl: ^0.16.1
 
   # Utilities
-  url_launcher: ^5.4.11
+  url_launcher: ^5.5.0
   path_provider: ^1.5.1
-  shared_preferences: ^0.5.7+3
+  shared_preferences: ^0.5.8
 
   # Icons
   material_design_icons_flutter: ^4.0.5345

@@ -10,12 +10,9 @@ import '../../model/settings.dart';
 export '../../model/settings.dart';
 
 class SettingsBloc extends Bloc<Settings, Settings> {
-  SettingsBloc() {
+  SettingsBloc() : super(Settings(initialized: false)) {
     _load().then(add);
   }
-
-  @override
-  Settings get initialState => Settings(initialized: false);
 
   @override
   Stream<Settings> mapEventToState(

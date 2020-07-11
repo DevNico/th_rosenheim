@@ -12,8 +12,7 @@ part 'canteen_event.dart';
 part 'canteen_state.dart';
 
 class CanteenBloc extends Bloc<CanteenEvent, CanteenState> {
-  @override
-  CanteenState get initialState => CanteenInitial();
+  CanteenBloc() : super(CanteenInitial());
 
   @override
   Stream<CanteenState> mapEventToState(
