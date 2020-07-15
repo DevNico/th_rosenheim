@@ -64,6 +64,8 @@ flutter:
   assets:
     - assets/lageplan.png
     - assets/sleep.png
+    - assets/logo.png
+    - assets/license.txt
     - assets/additives/
     - assets/locale/
   # To add assets to your application, add an assets section, like this:

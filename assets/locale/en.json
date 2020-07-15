@@ -68,5 +68,7 @@
 	"settings_lectures_description": "Choose your lectures",
 	"settings_lectures_max": "You cannot add more than 35 lectures.",
 	"settings_lectures_select_all": "Select all",
-	"settings_lectures_deselect_all": "Deselect all"
+	"settings_lectures_deselect_all": "Deselect all",
+	"settings_license_title": "License",
+	"settings_license_description": "Show licenses of used third party packages"
 }

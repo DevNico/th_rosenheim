@@ -66,5 +66,7 @@
 	"settings_lectures_description": "Wähle deine Vorlesungen",
 	"settings_lectures_max": "Du kannst nur maximal 35 Vorlesungen auswählen.",
 	"settings_lectures_select_all": "Alle auswählen",
-	"settings_lectures_deselect_all": "Alle abwählen"
+	"settings_lectures_deselect_all": "Alle abwählen",
+	"settings_license_title": "Lizenz",
+	"settings_license_description": "Zeige Lizenzen von benutzter drittanbieter Software"
 }

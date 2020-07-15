@@ -75,6 +75,8 @@ class ThTranslations {
   String get settingsLecturesSelectAll => text('settings_lectures_select_all');
   String get settingsLecturesDeselectAll =>
       text('settings_lectures_deselect_all');
+  String get settingsLicenseTitle => text('settings_license_title');
+  String get settingsLicenseDescription => text('settings_license_description');
 
   String text(String key) => _localisedValues[key] ?? '';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/settings/settings_bloc.dart';
@@ -42,6 +43,17 @@ class _SettingsPageState extends State<SettingsPage> {
               title: ThTranslations.of(context).settingsLanguageTitle,
               subtitle: ThTranslations.of(context).settingsLanguageDescription,
               builder: (context) => LanguageSettings(),
+            ),
+            _SettingsSpacer(),
+            _SettingsLinkButton(
+              title: ThTranslations.of(context).settingsLicenseTitle,
+              subtitle: ThTranslations.of(context).settingsLicenseDescription,
+              onTap: () async => showLicensePage(
+                context: context,
+                applicationName: 'TH Rosenheim',
+                applicationLegalese:
+                    await rootBundle.loadString('assets/license.txt'),
+              ),
             ),
             _SettingsSpacer(),
             _SettingsTitle(
@@ -113,13 +125,34 @@ class _SettingsLink extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return _SettingsLinkButton(
+      title: title,
+      subtitle: subtitle,
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: builder)),
+    );
+  }
+}
+
+class _SettingsLinkButton extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  const _SettingsLinkButton({
+    Key key,
+    @required this.title,
+    @required this.subtitle,
+    @required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       child: ListTile(
         title: Text(title),
         subtitle: Text(subtitle),
         trailing: Icon(Icons.chevron_right),
-        onTap: () =>
-            Navigator.push(context, MaterialPageRoute(builder: builder)),
+        onTap: onTap,
       ),
     );
   }
