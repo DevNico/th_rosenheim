@@ -23,7 +23,10 @@ class CanteenBloc extends Bloc<CanteenEvent, CanteenState> {
     }
   }
 
-  Stream<CanteenState> _mapLoadCanteenWeekToState(DateTime firstDay, DateTime weekStart) async* {
+  Stream<CanteenState> _mapLoadCanteenWeekToState(
+    DateTime firstDay,
+    DateTime weekStart,
+  ) async* {
     final canteen = <int, List<CanteenMeal>>{};
 
     final newCanteen = await EatApi().getCanteenWeek(
@@ -38,7 +41,8 @@ class CanteenBloc extends Bloc<CanteenEvent, CanteenState> {
 
     if (newCanteen != null) {
       for (final day in newCanteen.days) {
-        canteen[firstDay.differenceInDaysWithoutWeekends(day.date)] = day.dishes;
+        canteen[firstDay.differenceInDaysWithoutWeekends(day.date)] =
+            day.dishes;
       }
     }
 
@@ -46,8 +50,6 @@ class CanteenBloc extends Bloc<CanteenEvent, CanteenState> {
     for (var i = diff; i < diff + 5; i++) {
       if (!canteen.containsKey(i)) canteen[i] = [];
     }
-
-    // canteen.forEach((key, value) => logger.d('$key: ${value.length}'));
 
     yield CanteenLoaded(canteen);
   }

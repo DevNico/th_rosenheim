@@ -26,7 +26,9 @@ class _SettingsPageState extends State<SettingsPage> {
         builder: (context, settings) => ListView(
           padding: EdgeInsets.symmetric(horizontal: 8, vertical: 8),
           children: <Widget>[
-            _SettingsTitle(title: ThTranslations.of(context).settingsCategoryGeneral),
+            _SettingsTitle(
+              title: ThTranslations.of(context).settingsCategoryGeneral,
+            ),
             _SettingsButton(
               title: ThTranslations.of(context).settingsDarkThemeTitle,
               subtitle: ThTranslations.of(context).settingsDarkThemeDescription,
@@ -42,7 +44,9 @@ class _SettingsPageState extends State<SettingsPage> {
               builder: (context) => LanguageSettings(),
             ),
             _SettingsSpacer(),
-            _SettingsTitle(title: ThTranslations.of(context).settingsCategoryTimetable),
+            _SettingsTitle(
+              title: ThTranslations.of(context).settingsCategoryTimetable,
+            ),
             _SettingsLink(
               title: ThTranslations.of(context).settingsSemesterTitle,
               subtitle: ThTranslations.of(context).settingsSemesterDescription,
@@ -114,7 +118,8 @@ class _SettingsLink extends StatelessWidget {
         title: Text(title),
         subtitle: Text(subtitle),
         trailing: Icon(Icons.chevron_right),
-        onTap: () => Navigator.push(context, MaterialPageRoute(builder: builder)),
+        onTap: () =>
+            Navigator.push(context, MaterialPageRoute(builder: builder)),
       ),
     );
   }

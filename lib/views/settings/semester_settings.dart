@@ -49,11 +49,13 @@ class _SemesterSettingsState extends State<SemesterSettings> {
                       groupValue: settings.semester,
                       value: semester,
                       onChanged: (semester) {
-                        BlocProvider.of<SettingsBloc>(context).add(settings.merge(Settings(
-                          semester: semester,
-                          course: null,
-                          lectures: [],
-                        )));
+                        BlocProvider.of<SettingsBloc>(context).add(
+                          Settings(
+                            semester: semester,
+                            course: null,
+                            lectures: [],
+                          ),
+                        );
                       },
                     ),
                   );

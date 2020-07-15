@@ -30,7 +30,8 @@ class TimetableEntryListTile extends StatelessWidget {
           children: <Widget>[
             Text(
               entries.first.lectureName,
-              style: theme.primaryTextTheme.subtitle1.copyWith(fontWeight: FontWeight.w500, fontSize: 15),
+              style: theme.primaryTextTheme.subtitle1
+                  .copyWith(fontWeight: FontWeight.w500, fontSize: 15),
             ),
             SizedBox(height: 2),
             AutoSizeText(
@@ -43,7 +44,10 @@ class TimetableEntryListTile extends StatelessWidget {
       );
     }
 
-    final isDone = selectedDate.withoutTime().add(entries.first.endTime).isBefore(DateTime.now());
+    final isDone = selectedDate
+        .withoutTime()
+        .add(entries.first.endTime)
+        .isBefore(DateTime.now());
 
     return GestureDetector(
       onTap: () {
@@ -51,8 +55,10 @@ class TimetableEntryListTile extends StatelessWidget {
           context: context,
           builder: (_) {
             return Dialog(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-              child: TimetableEventDetails(selectedDate: selectedDate, entries: entries),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              child: TimetableEventDetails(
+                  selectedDate: selectedDate, entries: entries),
             );
           },
         );
@@ -113,21 +119,30 @@ class TimetableEntryListTile extends StatelessWidget {
                       for (final event in entries)
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsets.only(right: entries.indexOf(event) < entries.length ? 6 : 0),
+                            padding: EdgeInsets.only(
+                              right: entries.indexOf(event) < entries.length
+                                  ? 6
+                                  : 0,
+                            ),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 AutoSizeText(
-                                  entries.length > 1 ? event.lectureShortName : event.lectureName,
+                                  entries.length > 1
+                                      ? event.lectureShortName
+                                      : event.lectureName,
                                   maxLines: 1,
                                   style: theme.primaryTextTheme.bodyText1
-                                      .copyWith(fontWeight: FontWeight.w500, fontSize: 15),
+                                      .copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 15),
                                 ),
                                 SizedBox(height: 2),
                                 AutoSizeText(
-                                  '${event.room != '' ? '${event.room} | ' : ''}${entries.length > 1 ? event.lecturerShortName : event.lecturerName}',
+                                  event.detailsText(short: entries.length > 1),
                                   maxLines: 1,
-                                  style: theme.primaryTextTheme.bodyText1.copyWith(fontSize: 15),
+                                  style: theme.primaryTextTheme.bodyText1
+                                      .copyWith(fontSize: 15),
                                 ),
                               ],
                             ),

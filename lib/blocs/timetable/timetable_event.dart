@@ -17,5 +17,6 @@ class LoadTimetableWeek extends TimetableEvent {
   List<Object> get props => [weekStart];
 
   @override
-  String toString() => 'LoadTimetableWeek { settings: $settings, weekStart: $weekStart }';
+  String toString() =>
+      'LoadTimetableWeek { settings: $settings, weekStart: $weekStart }';
 }

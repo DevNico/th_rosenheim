@@ -59,7 +59,8 @@ class CanteenWeek {
 
   Map<String, dynamic> toJson() => _$CanteenWeekToJson(this);
 
-  factory CanteenWeek.fromJson(Map<String, dynamic> json) => _$CanteenWeekFromJson(json);
+  factory CanteenWeek.fromJson(Map<String, dynamic> json) =>
+      _$CanteenWeekFromJson(json);
 }
 
 @JsonSerializable()
@@ -74,7 +75,8 @@ class CanteenDay {
 
   Map<String, dynamic> toJson() => _$CanteenDayToJson(this);
 
-  factory CanteenDay.fromJson(Map<String, dynamic> json) => _$CanteenDayFromJson(json);
+  factory CanteenDay.fromJson(Map<String, dynamic> json) =>
+      _$CanteenDayFromJson(json);
 }
 
 enum CanteenMealType { vegan, vegetarian, beef, pig, chicken }
@@ -118,7 +120,8 @@ class CanteenMeal {
 
     additives = [];
     for (final ingredient in ingredients) {
-      if (ingredient.length == 3 && additives.contains(ingredient.substring(0, 2))) {
+      if (ingredient.length == 3 &&
+          additives.contains(ingredient.substring(0, 2))) {
         if (!additives.contains(ingredient.substring(0, 2))) {
           additives.add(ingredient.substring(0, 2));
         }
@@ -135,5 +138,6 @@ class CanteenMeal {
 
   Map<String, dynamic> toJson() => _$CanteenMealToJson(this);
 
-  factory CanteenMeal.fromJson(Map<String, dynamic> json) => _$CanteenMealFromJson(json);
+  factory CanteenMeal.fromJson(Map<String, dynamic> json) =>
+      _$CanteenMealFromJson(json);
 }

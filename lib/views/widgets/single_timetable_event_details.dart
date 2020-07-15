@@ -19,15 +19,19 @@ class SingleTimetableEventDetails extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
           child: Text(
             entry.lectureName,
-            style: theme.primaryTextTheme.subtitle1.copyWith(fontSize: 17, fontWeight: FontWeight.w500),
+            style: theme.primaryTextTheme.subtitle1
+                .copyWith(fontSize: 17, fontWeight: FontWeight.w500),
           ),
         ),
         if (entry.room != '')
-          _buildInfo(Icons.room, entry.room, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
+          _buildInfo(Icons.room, entry.room,
+              theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
         if (entry.lectureExtra != '')
-          _buildInfo(Icons.info, entry.lectureExtra, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
+          _buildInfo(Icons.info, entry.lectureExtra,
+              theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
         if (entry.lecturerName != '')
-          _buildInfo(Icons.person, entry.lecturerName, theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
+          _buildInfo(Icons.person, entry.lecturerName,
+              theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16)),
       ],
     );
   }

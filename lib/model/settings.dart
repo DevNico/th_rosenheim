@@ -38,10 +38,18 @@ class Settings extends Equatable {
 
   Map<String, dynamic> toJson() => _$SettingsToJson(this);
 
-  factory Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);
+  factory Settings.fromJson(Map<String, dynamic> json) =>
+      _$SettingsFromJson(json);
 
   @override
-  List<Object> get props => [semester, course, ...(lectures ?? []), themeMode, locale, initialized];
+  List<Object> get props => [
+        semester,
+        course,
+        ...(lectures ?? []),
+        themeMode,
+        locale,
+        initialized,
+      ];
 
   @override
   String toString() => initialized

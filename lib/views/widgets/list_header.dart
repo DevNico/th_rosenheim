@@ -20,7 +20,10 @@ class ListHeader extends StatelessWidget {
         children: <Widget>[
           Text(
             text,
-            style: Theme.of(context).primaryTextTheme.headline6.copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(context)
+                .primaryTextTheme
+                .headline6
+                .copyWith(fontWeight: FontWeight.w500),
           ),
           if (trailing != null) trailing,
         ],

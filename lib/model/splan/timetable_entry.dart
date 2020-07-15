@@ -1,7 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
-enum EntryType { weekly, biweekly, everyThreeWeeks, everyFourWeeks, single, holiday, exam }
+enum EntryType {
+  weekly,
+  biweekly,
+  everyThreeWeeks,
+  everyFourWeeks,
+  single,
+  holiday,
+  exam
+}
 
 class TimetableEntry extends Equatable {
   final String lectureName;
@@ -27,6 +35,12 @@ class TimetableEntry extends Equatable {
     @required this.room,
     @required this.entryType,
   });
+
+  String detailsText({
+    @required bool short,
+  }) =>
+      '${room != '' ? '$room | ' : ''}'
+      '${short ? lecturerShortName : lecturerName}';
 
   @override
   List<Object> get props => [

@@ -15,7 +15,8 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
   int _index;
   PageController _pageController;
 
@@ -24,7 +25,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     super.initState();
     _index = 0;
     _pageController = PageController(initialPage: _index, keepPage: true);
-    _pageController.addListener(() => setState(() => _index = _pageController.page.toInt()));
+    _pageController.addListener(
+        () => setState(() => _index = _pageController.page.toInt()));
   }
 
   @override
@@ -54,9 +56,12 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         onTap: (index) => _pageController.jumpToPage(index),
         backgroundColor: theme.primaryColorLight,
         items: <BubbleBottomBarItem>[
-          _buildBubbleBottomBarItem(Icons.home, ThTranslations.of(context).dashboard),
-          _buildBubbleBottomBarItem(MdiIcons.map, ThTranslations.of(context).map),
-          _buildBubbleBottomBarItem(MdiIcons.cog, ThTranslations.of(context).settings),
+          _buildBubbleBottomBarItem(
+              Icons.home, ThTranslations.of(context).dashboard),
+          _buildBubbleBottomBarItem(
+              MdiIcons.map, ThTranslations.of(context).map),
+          _buildBubbleBottomBarItem(
+              MdiIcons.cog, ThTranslations.of(context).settings),
         ],
       ),
     );
@@ -68,7 +73,8 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
     return BubbleBottomBarItem(
       icon: Icon(icon, color: theme.primaryIconTheme.color),
       activeIcon: Icon(icon, color: theme.accentColor),
-      title: Text(text, style: TextStyle(color: theme.primaryTextTheme.subtitle1.color)),
+      title: Text(text,
+          style: TextStyle(color: theme.primaryTextTheme.subtitle1.color)),
       backgroundColor: theme.accentColor,
     );
   }

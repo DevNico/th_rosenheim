@@ -25,7 +25,9 @@ class _LanguageSettingsState extends State<LanguageSettings> {
               title: Text('Deutsch'),
               value: 'de',
               onChanged: (loc) {
-                BlocProvider.of<SettingsBloc>(context).add(Settings(locale: loc));
+                BlocProvider.of<SettingsBloc>(context).add(
+                  Settings(locale: loc),
+                );
               },
               groupValue: settings.locale,
             ),
@@ -33,7 +35,9 @@ class _LanguageSettingsState extends State<LanguageSettings> {
               title: Text('English'),
               value: 'en',
               onChanged: (loc) {
-                BlocProvider.of<SettingsBloc>(context).add(Settings(locale: loc));
+                BlocProvider.of<SettingsBloc>(context).add(
+                  Settings(locale: loc),
+                );
               },
               groupValue: settings.locale,
             )

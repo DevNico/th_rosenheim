@@ -34,7 +34,9 @@ class SplanApi extends BaseApi {
         queryParameters: {'m': 'getlocs'},
       );
       final json = await parseJsonInBackground(latin1.decode(response.data));
-      return (json[0] as List).map((element) => Location.fromJson(element)).toList();
+      return (json[0] as List)
+          .map((element) => Location.fromJson(element))
+          .toList();
     } on Exception catch (error, stacktrace) {
       logger.e('Error getting Locations from SplanApi.', error, stacktrace);
       return null;
@@ -50,7 +52,9 @@ class SplanApi extends BaseApi {
         },
       );
       final json = await parseJsonInBackground(latin1.decode(response.data));
-      return (json[0] as List).map((element) => Semester.fromJson(element)).toList();
+      return (json[0] as List)
+          .map((element) => Semester.fromJson(element))
+          .toList();
     } on Exception catch (error, stacktrace) {
       logger.e('Error getting Semesters from SplanApi.', error, stacktrace);
       return null;
@@ -67,7 +71,9 @@ class SplanApi extends BaseApi {
         },
       );
       final json = await parseJsonInBackground(latin1.decode(response.data));
-      return (json[0] as List).map((element) => Course.fromJson(element)).toList();
+      return (json[0] as List)
+          .map((element) => Course.fromJson(element))
+          .toList();
     } on Exception catch (error, stacktrace) {
       logger.e('Error getting Courses from SplanApi.', error, stacktrace);
       return null;
@@ -88,7 +94,9 @@ class SplanApi extends BaseApi {
         },
       );
       final json = await parseJsonInBackground(latin1.decode(response.data));
-      return (json[0] as List).map((element) => PlanningGroup.fromJson(element)).toList();
+      return (json[0] as List)
+          .map((element) => PlanningGroup.fromJson(element))
+          .toList();
     } on Exception catch (error, stacktrace) {
       logger.e('Error getting CourseGroups from SplanApi.', error, stacktrace);
       return null;
@@ -150,7 +158,9 @@ class SplanApi extends BaseApi {
         final tooltip = element.querySelector('.tooltip');
         final tooltipStrings = tooltip.innerHtml.split('<br>');
 
-        final leftString = RegExp(r'left:(-?\d+)px').firstMatch(element.attributes['style']).group(1);
+        final leftString = RegExp(r'left:(-?\d+)px')
+            .firstMatch(element.attributes['style'])
+            .group(1);
         final left = int.parse(leftString);
         var day;
         if (left >= -1 && left < 179) {
@@ -173,21 +183,28 @@ class SplanApi extends BaseApi {
 
         final elementStrings = element.innerHtml.split('<br>');
 
-        final lectureSubgroup = elementStrings.length > 3 && elementStrings[4].startsWith('<span')
-            ? elementStrings[4].replaceAll(RegExp('<[^>]*>'), '')
-            : '';
+        final lectureSubgroup =
+            elementStrings.length > 3 && elementStrings[4].startsWith('<span')
+                ? elementStrings[4].replaceAll(RegExp('<[^>]*>'), '')
+                : '';
 
         // Time
-        final timeStringRegExpMatch = RegExp(r'(\d\d:\d\d)-(\d\d:\d\d)').firstMatch(element.innerHtml);
+        final timeRegExpMatch =
+            RegExp(r'(\d\d:\d\d)-(\d\d:\d\d)').firstMatch(element.innerHtml);
         var startTime, endTime;
-        if (timeStringRegExpMatch != null) {
-          final startTimeParts = timeStringRegExpMatch.group(1).split(':');
-          startTime = Duration(hours: int.parse(startTimeParts[0]), minutes: int.parse(startTimeParts[1]));
-          final endTimeParts = timeStringRegExpMatch.group(2).split(':');
-          endTime = Duration(hours: int.parse(endTimeParts[0]), minutes: int.parse(endTimeParts[1]));
+        if (timeRegExpMatch != null) {
+          final startTimeParts = timeRegExpMatch.group(1).split(':');
+          startTime = Duration(
+              hours: int.parse(startTimeParts[0]),
+              minutes: int.parse(startTimeParts[1]));
+          final endTimeParts = timeRegExpMatch.group(2).split(':');
+          endTime = Duration(
+              hours: int.parse(endTimeParts[0]),
+              minutes: int.parse(endTimeParts[1]));
         }
 
-        final room = tooltipStrings[3] == '${timeStringRegExpMatch.group(1)}-${timeStringRegExpMatch.group(2)}'
+        final room = tooltipStrings[3] ==
+                '${timeRegExpMatch.group(1)}-${timeRegExpMatch.group(2)}'
             ? ''
             : tooltipStrings[3];
 
@@ -195,7 +212,8 @@ class SplanApi extends BaseApi {
             ? elementStrings[1].replaceAll(RegExp('<sup>.*<\/sup>'), '')
             : elementStrings[0].replaceAll(RegExp('<sup>.*<\/sup>'), '');
 
-        final lecturerShortName = elementStrings[0] == room ? elementStrings[2] : elementStrings[1];
+        final lecturerShortName =
+            elementStrings[0] == room ? elementStrings[2] : elementStrings[1];
 
         var timetableEntry;
         if (entryType != EntryType.holiday) {
@@ -215,7 +233,8 @@ class SplanApi extends BaseApi {
           timetableEntry = TimetableEntry(
             lectureName: tooltipStrings[0],
             lectureShortName: '',
-            lectureExtra: elementStrings[0].replaceAll(tooltipStrings[1], '').trim(),
+            lectureExtra:
+                elementStrings[0].replaceAll(tooltipStrings[1], '').trim(),
             lecturerName: '',
             lecturerShortName: '',
             planningGroup: '',
@@ -241,7 +260,9 @@ class SplanApi extends BaseApi {
   }
 
   String _compressIdsForURLParam(List<int> ids) {
-    final encodingChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*.'.split('');
+    final encodingChars =
+        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789*.'
+            .split('');
     var res = '';
 
     var first = _adjustValueWithNull(ids[0]);
@@ -256,7 +277,8 @@ class SplanApi extends BaseApi {
     }
 
     for (var i = 1; i < ids.length; i++) {
-      var diff = _adjustValueWithNull(ids[i]) - _adjustValueWithNull(ids[i - 1]);
+      var diff =
+          _adjustValueWithNull(ids[i]) - _adjustValueWithNull(ids[i - 1]);
       res += diff >= 0 ? ',' : '|';
       if (diff < 0) {
         diff = -diff;

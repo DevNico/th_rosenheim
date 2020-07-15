@@ -8,7 +8,8 @@ import 'semester_settings.dart';
 
 class CourseOfStudiesSettings extends StatefulWidget {
   @override
-  _CourseOfStudiesSettingsState createState() => _CourseOfStudiesSettingsState();
+  _CourseOfStudiesSettingsState createState() =>
+      _CourseOfStudiesSettingsState();
 }
 
 class _CourseOfStudiesSettingsState extends State<CourseOfStudiesSettings> {
@@ -29,12 +30,21 @@ class _CourseOfStudiesSettingsState extends State<CourseOfStudiesSettings> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(ThTranslations.of(context).settingsSemesterNotConfigured),
+                    Text(ThTranslations.of(context)
+                        .settingsSemesterNotConfigured),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsSemesterNotConfiguredButton),
+                      child: Text(
+                        ThTranslations.of(context)
+                            .settingsSemesterNotConfiguredButton,
+                      ),
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SemesterSettings()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SemesterSettings(),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -70,7 +80,8 @@ class _CourseOfStudiesSettingsState extends State<CourseOfStudiesSettings> {
                         value: course,
                         groupValue: settings.course,
                         onChanged: (checked) {
-                          BlocProvider.of<SettingsBloc>(context).add(settings.merge(Settings(
+                          BlocProvider.of<SettingsBloc>(context)
+                              .add(settings.merge(Settings(
                             course: course,
                             lectures: [],
                           )));

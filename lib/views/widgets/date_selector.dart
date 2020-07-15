@@ -34,16 +34,19 @@ class _DateSelectorState extends State<DateSelector> {
   void initState() {
     super.initState();
     _pageController = PageController(
-      initialPage: (widget.endDate.difference(widget.selectedDate).inDays / 7).ceil().abs(),
+      initialPage: (widget.endDate.difference(widget.selectedDate).inDays / 7)
+          .ceil()
+          .abs(),
     );
     _pageController.addListener(() {
       widget.onSwipe(_currentWeekStart);
     });
   }
 
-  DateTime get _currentWeekStart => widget.selectedDate
-      .weekStart()
-      .add(Duration(days: 7 * (_pageController.page.round() - _pageController.initialPage)));
+  DateTime get _currentWeekStart =>
+      widget.selectedDate.weekStart().add(Duration(
+          days: 7 *
+              (_pageController.page.round() - _pageController.initialPage)));
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +54,9 @@ class _DateSelectorState extends State<DateSelector> {
       width: MediaQuery.of(context).size.width,
       height: 50,
       child: PageView.builder(
-        itemCount: (widget.endDate.difference(widget.startDate).inDays / 7).ceil().abs(),
+        itemCount: (widget.endDate.difference(widget.startDate).inDays / 7)
+            .ceil()
+            .abs(),
         physics: ClampingScrollPhysics(),
         controller: _pageController,
         itemBuilder: (_, i) {

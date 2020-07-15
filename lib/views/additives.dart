@@ -57,12 +57,14 @@ class Additives extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         value,
-                        style: theme.primaryTextTheme.subtitle1.copyWith(fontSize: 16),
+                        style: theme.primaryTextTheme.subtitle1
+                            .copyWith(fontSize: 16),
                       ),
                       if (subtitle != '')
                         Text(
                           subtitle,
-                          style: theme.primaryTextTheme.subtitle1.copyWith(fontSize: 15, color: Colors.grey),
+                          style: theme.primaryTextTheme.subtitle1
+                              .copyWith(fontSize: 15, color: Colors.grey),
                         ),
                     ],
                   ),

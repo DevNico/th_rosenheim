@@ -19,10 +19,15 @@ class TimetableLoaded extends TimetableState {
   });
 
   @override
-  List<Object> get props => [loadedWithSettings, timetable.map((k, v) => MapEntry(k, v.length))];
+  List<Object> get props => [
+        loadedWithSettings,
+        timetable.map((k, v) => MapEntry(k, v.length)),
+      ];
 
   @override
-  String toString() => 'TimetableLoaded { timetable: ${timetable.map((key, value) => MapEntry(key, value.length))} }';
+  String toString() => 'TimetableLoaded { '
+      'timetable: ${timetable.map((key, value) => MapEntry(key, value.length))}'
+      ' }';
 }
 
 class TimetableEmpty extends TimetableState {

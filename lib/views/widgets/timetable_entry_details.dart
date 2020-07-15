@@ -18,7 +18,8 @@ class TimetableEventDetails extends StatefulWidget {
   _TimetableEventDetailsState createState() => _TimetableEventDetailsState();
 }
 
-class _TimetableEventDetailsState extends State<TimetableEventDetails> with SingleTickerProviderStateMixin {
+class _TimetableEventDetailsState extends State<TimetableEventDetails>
+    with SingleTickerProviderStateMixin {
   TabController _tabController;
   List<Widget> _children;
   int _currentIndex;
@@ -33,7 +34,9 @@ class _TimetableEventDetailsState extends State<TimetableEventDetails> with Sing
       length: widget.entries.length,
       initialIndex: _currentIndex,
     );
-    _children = widget.entries.map((event) => SingleTimetableEventDetails(event)).toList();
+    _children = widget.entries
+        .map((event) => SingleTimetableEventDetails(event))
+        .toList();
     super.initState();
   }
 
@@ -64,7 +67,9 @@ class _TimetableEventDetailsState extends State<TimetableEventDetails> with Sing
             onTap: (_) {
               setState(() {});
             },
-            tabs: widget.entries.map((e) => Tab(text: e.lectureShortName)).toList(),
+            tabs: widget.entries
+                .map((e) => Tab(text: e.lectureShortName))
+                .toList(),
           ),
         _children[_tabController.index],
       ],

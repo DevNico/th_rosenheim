@@ -17,5 +17,6 @@ class LoadCanteenWeek extends CanteenEvent {
   List<Object> get props => [weekStart];
 
   @override
-  String toString() => 'LoadCanteenWeek { firstDay: $firstDay, weekStart: $weekStart }';
+  String toString() =>
+      'LoadCanteenWeek { firstDay: $firstDay, weekStart: $weekStart }';
 }

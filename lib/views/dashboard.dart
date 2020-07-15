@@ -78,7 +78,10 @@ class _DashboardPageState extends State<DashboardPage> {
                 children: <Widget>[
                   Text(
                     ThTranslations.of(context).settingsTimetableNotConfigured,
-                    style: Theme.of(context).textTheme.headline6.copyWith(fontSize: 18),
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        .copyWith(fontSize: 18),
                   ),
                   SizedBox(height: 16),
                   if (settings.semester == null) ...[
@@ -87,9 +90,15 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                     SizedBox(height: 16),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsSemesterNotConfiguredButton),
-                      onPressed: () =>
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SemesterSettings())),
+                      child: Text(
+                        ThTranslations.of(context)
+                            .settingsSemesterNotConfiguredButton,
+                      ),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => SemesterSettings(),
+                        ),
+                      ),
                     )
                   ],
                   if (settings.semester != null && settings.course == null) ...[
@@ -98,22 +107,31 @@ class _DashboardPageState extends State<DashboardPage> {
                     ),
                     SizedBox(height: 16),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsCourseNotConfiguredButton),
-                      onPressed: () => Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) => CourseOfStudiesSettings())),
+                      child: Text(ThTranslations.of(context)
+                          .settingsCourseNotConfiguredButton),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CourseOfStudiesSettings(),
+                        ),
+                      ),
                     )
                   ],
                   if (settings.semester != null &&
                       settings.course != null &&
-                      (settings.lectures == null || settings.lectures.isEmpty)) ...[
+                      (settings.lectures == null ||
+                          settings.lectures.isEmpty)) ...[
                     Text(
                       ThTranslations.of(context).settingsLecturesNotConfigured,
                     ),
                     SizedBox(height: 16),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsLecturesNotConfiguredButton),
-                      onPressed: () =>
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LectureSettings())),
+                      child: Text(ThTranslations.of(context)
+                          .settingsLecturesNotConfiguredButton),
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => LectureSettings(),
+                        ),
+                      ),
                     )
                   ]
                 ],
@@ -123,7 +141,8 @@ class _DashboardPageState extends State<DashboardPage> {
         }
 
         if (_lastPage == null) {
-          _lastPage = settings.semester.startDate.differenceInDaysWithoutWeekends(_selectedDate);
+          _lastPage = settings.semester.startDate
+              .differenceInDaysWithoutWeekends(_selectedDate);
           _pageController = PageController(initialPage: _lastPage);
         }
 
@@ -146,15 +165,18 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                       FlatButton(
                         onPressed: () {
-                          _pageController
-                              .jumpToPage(settings.semester.startDate.differenceInDaysWithoutWeekends(_today));
+                          _pageController.jumpToPage(settings.semester.startDate
+                              .differenceInDaysWithoutWeekends(_today));
                           setState(() => _selectedDate = _today);
                         },
                         child: Row(
                           children: <Widget>[
                             AutoSizeText(
-                              DateFormat('EE  dd. MMM', 'de_DE').format(_today).replaceAll(r'(\d+)', r'$1\.'),
-                              style: theme.primaryTextTheme.bodyText1.copyWith(fontSize: 16),
+                              DateFormat('EE  dd. MMM', 'de_DE')
+                                  .format(_today)
+                                  .replaceAll(r'(\d+)', r'$1\.'),
+                              style: theme.primaryTextTheme.bodyText1
+                                  .copyWith(fontSize: 16),
                               maxFontSize: 16,
                             ),
                             SizedBox(width: 8),
@@ -182,8 +204,9 @@ class _DashboardPageState extends State<DashboardPage> {
                             selectedDate: _selectedDate,
                             onDaySelected: (date) {
                               setState(() {
-                                _pageController
-                                    .jumpToPage(settings.semester.startDate.differenceInDaysWithoutWeekends(date));
+                                _pageController.jumpToPage(settings
+                                    .semester.startDate
+                                    .differenceInDaysWithoutWeekends(date));
                                 _selectedDate = date;
                                 _visibleWeekStart = date.weekStart();
                                 _selectorKey = ValueKey(_visibleWeekStart);
@@ -196,8 +219,10 @@ class _DashboardPageState extends State<DashboardPage> {
                             },
                           ),
                           Text(
-                            DateFormat('MMMM yyyy', 'de_DE').format(_visibleWeekStart),
-                            style: theme.primaryTextTheme.bodyText1.copyWith(fontSize: 15),
+                            DateFormat('MMMM yyyy', 'de_DE')
+                                .format(_visibleWeekStart),
+                            style: theme.primaryTextTheme.bodyText1
+                                .copyWith(fontSize: 15),
                           )
                         ],
                       ),
@@ -225,18 +250,24 @@ class _DashboardPageState extends State<DashboardPage> {
                   ListHeader(text: ThTranslations.of(context).timetable),
                   BlocBuilder<TimetableBloc, TimetableState>(
                     builder: (context, timetableState) {
-                      final date = settings.semester.startDate.add(Duration(days: i + (i ~/ 5) * 2)).withoutTime();
+                      final date = settings.semester.startDate
+                          .add(Duration(days: i + (i ~/ 5) * 2))
+                          .withoutTime();
 
                       if (timetableState is! TimetableLoaded ||
-                          !(timetableState as TimetableLoaded).timetable.containsKey(i)) {
-                        BlocProvider.of<TimetableBloc>(context).add(LoadTimetableWeek(
+                          !(timetableState as TimetableLoaded)
+                              .timetable
+                              .containsKey(i)) {
+                        BlocProvider.of<TimetableBloc>(context)
+                            .add(LoadTimetableWeek(
                           settings: settings,
                           weekStart: date.weekStart(),
                         ));
                       }
 
                       List<TimetableEntry> timetableEntries;
-                      if (timetableState is TimetableLoaded && timetableState.timetable.containsKey(i)) {
+                      if (timetableState is TimetableLoaded &&
+                          timetableState.timetable.containsKey(i)) {
                         timetableEntries = timetableState.timetable[i];
                       }
 
@@ -257,13 +288,16 @@ class _DashboardPageState extends State<DashboardPage> {
                           Icon(MdiIcons.arrowRight),
                         ],
                       ),
-                      onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => Additives())),
+                      onPressed: () => Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => Additives())),
                     ),
                   ),
                   BlocBuilder<CanteenBloc, CanteenState>(
                     builder: (context, state) {
-                      if (state is! CanteenLoaded || !(state as CanteenLoaded).canteen.containsKey(i)) {
-                        BlocProvider.of<CanteenBloc>(context).add(LoadCanteenWeek(
+                      if (state is! CanteenLoaded ||
+                          !(state as CanteenLoaded).canteen.containsKey(i)) {
+                        BlocProvider.of<CanteenBloc>(context)
+                            .add(LoadCanteenWeek(
                           firstDay: settings.semester.startDate,
                           weekStart: _selectedDate.weekStart(),
                         ));

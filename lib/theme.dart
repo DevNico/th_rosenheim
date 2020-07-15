@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 const kAppBarShape = RoundedRectangleBorder(
-  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(32), bottomRight: Radius.circular(32)),
+  borderRadius: BorderRadius.only(
+    bottomLeft: Radius.circular(32),
+    bottomRight: Radius.circular(32),
+  ),
 );
 
 const kDark = Color(0xFF333333);
@@ -54,8 +57,10 @@ ThemeData get theme {
     toggleableActiveColor: kOrange,
     dividerColor: kDividerDark,
     textTheme: _buildTextTheme(base.textTheme, kTextDark, kTextDarker),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme, kTextDark, kTextDarker),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme, kTextDark, kTextDarker),
+    primaryTextTheme:
+        _buildTextTheme(base.primaryTextTheme, kTextDark, kTextDarker),
+    accentTextTheme:
+        _buildTextTheme(base.accentTextTheme, kTextDark, kTextDarker),
     snackBarTheme: base.snackBarTheme.copyWith(
       backgroundColor: kLight,
       contentTextStyle: base.textTheme.bodyText1.copyWith(
@@ -97,8 +102,10 @@ ThemeData get darkTheme {
     toggleableActiveColor: kOrange,
     dividerColor: kDividerLight,
     textTheme: _buildTextTheme(base.textTheme, kTextLight, kTextLighter),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme, kTextLight, kTextLighter),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme, kTextLight, kTextLighter),
+    primaryTextTheme:
+        _buildTextTheme(base.primaryTextTheme, kTextLight, kTextLighter),
+    accentTextTheme:
+        _buildTextTheme(base.accentTextTheme, kTextLight, kTextLighter),
     snackBarTheme: base.snackBarTheme.copyWith(
       backgroundColor: kDark,
       contentTextStyle: base.textTheme.bodyText1.copyWith(

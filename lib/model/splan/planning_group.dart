@@ -21,7 +21,8 @@ class PlanningGroup extends Equatable {
     @required this.lectures,
   });
 
-  factory PlanningGroup.fromJson(Map<String, dynamic> json) => _$PlanningGroupFromJson(json);
+  factory PlanningGroup.fromJson(Map<String, dynamic> json) =>
+      _$PlanningGroupFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlanningGroupToJson(this);
 

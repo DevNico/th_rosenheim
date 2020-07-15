@@ -52,12 +52,19 @@ class _LectureSettingsState extends State<LectureSettings> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(ThTranslations.of(context).settingsSemesterNotConfigured),
+                    Text(ThTranslations.of(context)
+                        .settingsSemesterNotConfigured),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsSemesterNotConfiguredButton),
+                      child: Text(ThTranslations.of(context)
+                          .settingsSemesterNotConfiguredButton),
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SemesterSettings()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SemesterSettings(),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -70,12 +77,20 @@ class _LectureSettingsState extends State<LectureSettings> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text(ThTranslations.of(context).settingsCourseNotConfigured),
+                    Text(
+                      ThTranslations.of(context).settingsCourseNotConfigured,
+                    ),
                     RaisedButton(
-                      child: Text(ThTranslations.of(context).settingsCourseNotConfiguredButton),
+                      child: Text(ThTranslations.of(context)
+                          .settingsCourseNotConfiguredButton),
                       onPressed: () {
                         Navigator.pop(context);
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => CourseOfStudiesSettings()));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CourseOfStudiesSettings(),
+                          ),
+                        );
                       },
                     ),
                   ],
@@ -86,7 +101,8 @@ class _LectureSettingsState extends State<LectureSettings> {
             // Load Planning Groups on first render
             if (!initialized) {
               SplanApi()
-                  .getPlanningGroupsForSemesterAndCourse(semester: settings.semester, course: settings.course)
+                  .getPlanningGroupsForSemesterAndCourse(
+                      semester: settings.semester, course: settings.course)
                   .then((value) {
                 WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
                   setState(() {
@@ -116,7 +132,10 @@ class _LectureSettingsState extends State<LectureSettings> {
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 4),
                       child: ExpansionTile(
-                        title: Text('${planningGroup.shortName} ($selected/${planningGroup.lectures.length})'),
+                        title: Text(
+                          '${planningGroup.shortName} '
+                          '($selected/${planningGroup.lectures.length})',
+                        ),
                         subtitle: Text(planningGroup.name),
                         children: <Widget>[
                           Padding(
@@ -125,34 +144,59 @@ class _LectureSettingsState extends State<LectureSettings> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
                                 FlatButton(
-                                  child: Text('Deselect all'),
+                                  child: Text(
+                                    ThTranslations.of(context)
+                                        .settingsLecturesDeselectAll,
+                                  ),
                                   onPressed: () {
                                     final lectures = [...settings.lectures];
                                     var removed = lectures.length;
-                                    lectures.removeWhere(planningGroup.lectures.contains);
+                                    lectures.removeWhere(
+                                        planningGroup.lectures.contains);
                                     setState(() {
-                                      selectedTotal -= removed - lectures.length;
+                                      selectedTotal -=
+                                          removed - lectures.length;
                                     });
-                                    BlocProvider.of<SettingsBloc>(context).add(Settings(lectures: lectures));
+                                    BlocProvider.of<SettingsBloc>(context)
+                                        .add(Settings(lectures: lectures));
                                   },
                                 ),
                                 FlatButton(
-                                  child: Text('Select all'),
+                                  child: Text(
+                                    ThTranslations.of(context)
+                                        .settingsLecturesSelectAll,
+                                  ),
                                   onPressed: () {
-                                    final notSelected = [...planningGroup.lectures]
-                                        .where((lecture) => !settings.lectures.contains(lecture))
+                                    final notSelected = [
+                                      ...planningGroup.lectures
+                                    ]
+                                        .where((lecture) => !settings.lectures
+                                            .contains(lecture))
                                         .toList();
 
-                                    if (selectedTotal + notSelected.length > maxLectures) {
-                                      _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                        content: Text('You cannot add more than 35 lectures.'),
-                                      ));
+                                    if (selectedTotal + notSelected.length >
+                                        maxLectures) {
+                                      _scaffoldKey.currentState.showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            ThTranslations.of(context)
+                                                .settingsLecturesMax,
+                                          ),
+                                        ),
+                                      );
                                     } else {
                                       setState(() {
                                         selectedTotal += notSelected.length;
                                       });
                                       BlocProvider.of<SettingsBloc>(context)
-                                          .add(Settings(lectures: [...settings.lectures, ...notSelected]));
+                                          .add(
+                                        Settings(
+                                          lectures: [
+                                            ...settings.lectures,
+                                            ...notSelected
+                                          ],
+                                        ),
+                                      );
                                     }
                                   },
                                 ),
@@ -174,9 +218,14 @@ class _LectureSettingsState extends State<LectureSettings> {
                                       selectedTotal++;
                                     });
                                   } else {
-                                    _scaffoldKey.currentState.showSnackBar(SnackBar(
-                                      content: Text('You cannot add more than 35 lectures.'),
-                                    ));
+                                    _scaffoldKey.currentState.showSnackBar(
+                                      SnackBar(
+                                        content: Text(
+                                          ThTranslations.of(context)
+                                              .settingsLecturesMax,
+                                        ),
+                                      ),
+                                    );
                                   }
                                 } else {
                                   lectures.remove(lecture);
@@ -184,7 +233,9 @@ class _LectureSettingsState extends State<LectureSettings> {
                                     selectedTotal--;
                                   });
                                 }
-                                BlocProvider.of<SettingsBloc>(context).add(Settings(lectures: lectures));
+                                BlocProvider.of<SettingsBloc>(context).add(
+                                  Settings(lectures: lectures),
+                                );
                               },
                             )
                         ],

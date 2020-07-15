@@ -27,7 +27,10 @@ class DateButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         Text(
-          DateFormat('E', 'de_DE').format(date).replaceAll('.', '').replaceAll(r'(\d+)', r'$1\.'),
+          DateFormat('E', 'de_DE')
+              .format(date)
+              .replaceAll('.', '')
+              .replaceAll(r'(\d+)', r'$1\.'),
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14,
@@ -41,7 +44,9 @@ class DateButton extends StatelessWidget {
           style: TextStyle(
             color: date.isOnSameDayWith(selectedDate)
                 ? Colors.orange[400]
-                : date.weekday < DateTime.saturday ? theme.primaryTextTheme.subtitle1.color : Colors.red[700],
+                : date.weekday < DateTime.saturday
+                    ? theme.primaryTextTheme.subtitle1.color
+                    : Colors.red[700],
             fontWeight: FontWeight.w500,
             fontSize: 18,
             fontFeatures: <FontFeature>[FontFeature.tabularFigures()],

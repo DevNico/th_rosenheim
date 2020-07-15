@@ -11,5 +11,6 @@ class CacheObject {
 
   Map<String, dynamic> toJson() => _$CacheObjectToJson(this);
 
-  factory CacheObject.fromJson(Map<String, dynamic> json) => _$CacheObjectFromJson(json);
+  factory CacheObject.fromJson(Map<String, dynamic> json) =>
+      _$CacheObjectFromJson(json);
 }

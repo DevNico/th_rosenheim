@@ -26,7 +26,10 @@ class TimetableBloc extends Bloc<TimetableEvent, TimetableState> {
     }
   }
 
-  Stream<TimetableState> _mapLoadTimetableWeekToState(Settings settings, DateTime weekStart) async* {
+  Stream<TimetableState> _mapLoadTimetableWeekToState(
+    Settings settings,
+    DateTime weekStart,
+  ) async* {
     if (settings.semester == null ||
         settings.course == null ||
         settings.lectures == null ||
@@ -48,12 +51,16 @@ class TimetableBloc extends Bloc<TimetableEvent, TimetableState> {
         // Only add old data if the same settings were used to load it
         if (oldState.loadedWithSettings.semester == settings.semester &&
             oldState.loadedWithSettings.course == settings.course &&
-            listEquals(oldState.loadedWithSettings.lectures, settings.lectures)) {
+            listEquals(
+              oldState.loadedWithSettings.lectures,
+              settings.lectures,
+            )) {
           timetable.addAll((state as TimetableLoaded).timetable);
         }
       }
 
-      final baseInt = settings.semester.startDate.differenceInDaysWithoutWeekends(weekStart);
+      final baseInt = settings.semester.startDate
+          .differenceInDaysWithoutWeekends(weekStart);
 
       if (newTimetable != null) {
         for (final entry in newTimetable.entries) {

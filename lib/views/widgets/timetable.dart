@@ -47,7 +47,9 @@ class TimetableWidget extends StatelessWidget {
       currentEntries.add(entry);
     }
 
-    if (currentEntries != null && !currentEntries.isEmpty) combinedEntries.add(currentEntries);
+    if (currentEntries != null && !currentEntries.isEmpty) {
+      combinedEntries.add(currentEntries);
+    }
 
     return ListView.separated(
       shrinkWrap: true,

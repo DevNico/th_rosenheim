@@ -23,12 +23,17 @@ class Semester extends Equatable {
     @required this.shortName,
     DateTime startDate,
     DateTime endDate,
-  })  : startDate = startDate.weekday > DateTime.friday ? startDate.weekStart().add(Duration(days: 7)) : startDate,
-        endDate = endDate.weekday > DateTime.friday ? endDate.weekStart().add(Duration(days: 5)) : endDate;
+  })  : startDate = startDate.weekday > DateTime.friday
+            ? startDate.weekStart().add(Duration(days: 7))
+            : startDate,
+        endDate = endDate.weekday > DateTime.friday
+            ? endDate.weekStart().add(Duration(days: 5))
+            : endDate;
 
   int get weekDays => startDate.differenceInDaysWithoutWeekends(endDate);
 
-  factory Semester.fromJson(Map<String, dynamic> json) => _$SemesterFromJson(json);
+  factory Semester.fromJson(Map<String, dynamic> json) =>
+      _$SemesterFromJson(json);
 
   Map<String, dynamic> toJson() => _$SemesterToJson(this);
 
@@ -36,6 +41,11 @@ class Semester extends Equatable {
   List<Object> get props => [id, name, shortName, startDate, endDate];
 
   @override
-  String toString() =>
-      'Semester { id: $id, name: $name, shortName: $shortName, startDate: $startDate, endDate: $endDate }';
+  String toString() => 'Semester { '
+      'id: $id, '
+      'name: $name, '
+      'shortName: $shortName, '
+      'startDate: $startDate, '
+      'endDate: $endDate '
+      '}';
 }

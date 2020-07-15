@@ -2,7 +2,9 @@ extension DurationExtension on Duration {
   String stringify() {
     final minute = (inMinutes % 60);
     final hour = inHours.floor();
-    return '${hour < 10 ? '0$hour' : hour}:${minute < 10 ? '0$minute' : minute}';
+    return '${hour < 10 ? '0$hour' : hour}'
+        ':'
+        '${minute < 10 ? '0$minute' : minute}';
   }
 }
 
@@ -22,7 +24,8 @@ extension DateTimeExtension on DateTime {
     final firstDayOfYear = DateTime.utc(year, 1, 1);
     final dayOfWeek = firstDayOfYear.weekday;
 
-    return firstDayOfYear.add(Duration(days: (dayOfWeek <= DateTime.thursday ? 1 : 8) - dayOfWeek));
+    return firstDayOfYear.add(
+        Duration(days: (dayOfWeek <= DateTime.thursday ? 1 : 8) - dayOfWeek));
   }
 
   int differenceInDaysWithoutWeekends(DateTime other) {
@@ -31,7 +34,8 @@ extension DateTimeExtension on DateTime {
 
     while (currentDate.isBefore(other)) {
       currentDate = currentDate.add(Duration(days: 1));
-      if (currentDate.weekday != DateTime.saturday && currentDate.weekday != DateTime.sunday) {
+      if (currentDate.weekday != DateTime.saturday &&
+          currentDate.weekday != DateTime.sunday) {
         days += 1;
       }
     }

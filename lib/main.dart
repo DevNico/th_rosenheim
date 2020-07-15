@@ -22,7 +22,10 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
 
   // Portrait only
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 
   runApp(THRosenheimApp());
 }
@@ -44,7 +47,9 @@ class _THRosenheimAppState extends State<THRosenheimApp> {
         BlocProvider(lazy: false, create: (context) => CanteenBloc()),
       ],
       child: BlocBuilder<SettingsBloc, Settings>(
-        buildWhen: (previous, current) => previous.themeMode != current.themeMode || previous.locale != current.locale,
+        buildWhen: (previous, current) =>
+            previous.themeMode != current.themeMode ||
+            previous.locale != current.locale,
         builder: (context, settings) {
           if (!settings.initialized) {
             return Container(color: kDark);
@@ -53,11 +58,15 @@ class _THRosenheimAppState extends State<THRosenheimApp> {
           return MaterialApp(
             title: 'TH Rosenheim',
             localizationsDelegates: [
-              TranslationDelegate(newLocale: Locale(settings.locale ?? 'en', '')),
+              TranslationDelegate(
+                newLocale: Locale(settings.locale ?? 'en', ''),
+              ),
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
             ],
-            supportedLocales: THRosenheimApp.supportedLocales.map((l) => Locale(l, '')).toList(),
+            supportedLocales: THRosenheimApp.supportedLocales
+                .map((l) => Locale(l, ''))
+                .toList(),
             themeMode: settings.themeMode,
             theme: theme,
             darkTheme: darkTheme,

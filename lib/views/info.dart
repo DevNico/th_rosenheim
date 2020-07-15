@@ -15,7 +15,10 @@ class InfoScreen extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-            child: Text('TH Rosenheim', style: Theme.of(context).textTheme.headline1),
+            child: Text(
+              'TH Rosenheim',
+              style: Theme.of(context).textTheme.headline1,
+            ),
           ),
           ListTile(
             leading: Icon(Icons.home),
@@ -39,7 +42,9 @@ class InfoScreen extends StatelessWidget {
           ListTile(
             leading: Icon(MdiIcons.youtube),
             title: Text('Youtube'),
-            onTap: () => launchURL('https://youtube.com/channel/UCYpKSNr3xlmpEOGRvqlX4XQ'),
+            onTap: () => launchURL(
+              'https://youtube.com/channel/UCYpKSNr3xlmpEOGRvqlX4XQ',
+            ),
           ),
           ListTile(
             leading: Icon(MdiIcons.facebook),

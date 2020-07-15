@@ -11,10 +11,12 @@ class TranslationDelegate extends LocalizationsDelegate<ThTranslations> {
   const TranslationDelegate({this.newLocale});
 
   @override
-  bool isSupported(Locale locale) => THRosenheimApp.supportedLocales.contains(locale.languageCode);
+  bool isSupported(Locale locale) =>
+      THRosenheimApp.supportedLocales.contains(locale.languageCode);
 
   @override
-  Future<ThTranslations> load(Locale locale) => ThTranslations.load(newLocale ?? locale);
+  Future<ThTranslations> load(Locale locale) =>
+      ThTranslations.load(newLocale ?? locale);
 
   // TODO: Stop all text from flashing when the theme changes
   @override

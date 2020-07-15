@@ -31,7 +31,8 @@ class EatApi extends BaseApi {
       final now = DateTime.now();
       week = week ?? now.weekOfYear;
 
-      final response = await dio.get('${year ?? now.year}/${week < 10 ? '0$week' : week}.json');
+      final response = await dio
+          .get('${year ?? now.year}/${week < 10 ? '0$week' : week}.json');
       final json = await parseJsonInBackground(utf8.decode(response.data));
       return CanteenWeek.fromJson(json);
     } on Exception catch (_) {

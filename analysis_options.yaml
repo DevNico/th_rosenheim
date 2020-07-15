@@ -2,7 +2,6 @@ include: package:effective_dart/analysis_options.yaml
 
 linter:
   rules:
-    lines_longer_than_80_chars: false
     public_member_api_docs: false
     prefer_single_quotes: true
     avoid_classes_with_only_static_members: false

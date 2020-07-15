@@ -43,7 +43,10 @@ class CanteenWidget extends StatelessWidget {
               children: <Widget>[
                 Text(
                   ThTranslations.of(context).canteenNoData,
-                  style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(fontWeight: FontWeight.w500),
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .subtitle1
+                      .copyWith(fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -95,7 +98,9 @@ class MealWidget extends StatelessWidget {
                           itemCount: meal.additives.length,
                           itemBuilder: (_, index) {
                             if (meal.additives[index].isNumeric) {
-                              return Text(meal.additives[index], style: const TextStyle(fontSize: 16, height: 1.4));
+                              return Text(meal.additives[index],
+                                  style: const TextStyle(
+                                      fontSize: 16, height: 1.4));
                             } else {
                               return Image.asset(
                                 'assets/additives/${meal.additives[index]}.png',
@@ -103,7 +108,8 @@ class MealWidget extends StatelessWidget {
                               );
                             }
                           },
-                          separatorBuilder: (_, index) => Text(', ', style: const TextStyle(fontSize: 20)),
+                          separatorBuilder: (_, index) =>
+                              Text(', ', style: const TextStyle(fontSize: 20)),
                         ),
                       )
                     : SizedBox(),

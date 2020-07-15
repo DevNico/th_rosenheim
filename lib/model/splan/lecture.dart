@@ -19,7 +19,8 @@ class Lecture extends Equatable {
     @required this.pgid,
   });
 
-  factory Lecture.fromJson(Map<String, dynamic> json) => _$LectureFromJson(json);
+  factory Lecture.fromJson(Map<String, dynamic> json) =>
+      _$LectureFromJson(json);
 
   Map<String, dynamic> toJson() => _$LectureToJson(this);
 

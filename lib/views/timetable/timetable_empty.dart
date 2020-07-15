@@ -17,7 +17,10 @@ class TimetableNoLectures extends StatelessWidget {
           SizedBox(height: 16),
           Text(
             'Heute keine Vorlesungen',
-            style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(fontWeight: FontWeight.w500),
+            style: Theme.of(context)
+                .primaryTextTheme
+                .subtitle1
+                .copyWith(fontWeight: FontWeight.w500),
           ),
         ],
       ),
