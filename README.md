@@ -72,7 +72,16 @@ For Android run
 
 ## Contributing
 
-Every contribution is very much appreciated. All contributors will get listed below.
+Every contribution is very much appreciated. All contributors will get listed below ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://allcontributors.org/docs/en/overview) specification. Contributions of any kind welcome.
 

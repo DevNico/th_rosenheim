@@ -70,7 +70,16 @@ Für Android:
 
 ## Beitragen
 
-Jeder Beitrag ist herzlich willkommen. Alle Mitwirkenden werden hier aufgelistet.
+Jeder Beitrag ist herzlich willkommen. Alle Mitwirkenden werden hier aufgelistet ([emoji key](https://allcontributors.org/docs/de/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 
 Dieses Projekt folgt der [all-contributors](https://allcontributors.org/docs/de/overview) Spezifikation.
