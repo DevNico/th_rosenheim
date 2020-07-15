@@ -1,5 +1,8 @@
 # Unofficial TH Rosenheim App
 
+[![License: GPL-3.0](https://img.shields.io/badge/license-GPL3.0-blue.svg)](LICENSE.md)
+[![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart)
+
 Diese Readme ist auch auf [Deutsch](README_DE.md) verfügbar.
 
 This is a Cross-Platform Flutter App that displays customizable timetables as well as cantine information for students of the Rosenheim Technical University of Applied Sciences.
