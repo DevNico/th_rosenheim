@@ -63,5 +63,8 @@
 	"settings_course_title": "Studiengang",
 	"settings_course_description": "Wähle deinen Studiengang",
 	"settings_lectures_title": "Vorlesungen",
-	"settings_lectures_description": "Wähle deine Vorlesungen"
+	"settings_lectures_description": "Wähle deine Vorlesungen",
+	"settings_lectures_max": "Du kannst nur maximal 35 Vorlesungen auswählen.",
+	"settings_lectures_select_all": "Alle auswählen",
+	"settings_lectures_deselect_all": "Alle abwählen"
 }

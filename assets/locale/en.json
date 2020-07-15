@@ -65,5 +65,8 @@
 	"settings_course_title": "Course of studies",
 	"settings_course_description": "Choose your course of studies",
 	"settings_lectures_title": "Lectures",
-	"settings_lectures_description": "Choose your lectures"
+	"settings_lectures_description": "Choose your lectures",
+	"settings_lectures_max": "You cannot add more than 35 lectures.",
+	"settings_lectures_select_all": "Select all",
+	"settings_lectures_deselect_all": "Deselect all"
 }
