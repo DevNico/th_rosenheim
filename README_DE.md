@@ -36,7 +36,7 @@ Da dies eine inoffizielle App ist kann Sie leider nicht im App Store beziehungsw
 
 Um die App unter Android zu installieren kann einfach die neueste vorgefertigte apk Datei heruntergeladen werden.
 
-TODO: Link einfügen wenn die build pipeline fertig ist.
+[Releases](https://github.com/DevNico/th_rosenheim/releases/)
 
 ### IOS / Aus Quellcode bauen
 

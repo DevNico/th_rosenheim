@@ -37,7 +37,7 @@ Since this is an unofficial App it unfortunately cannot be released in the App S
 
 To use this Application on Android phones you can download the latest prebuilt apk.
 
-TODO: Insert link when build pipeline is set up.
+[Releases](https://github.com/DevNico/th_rosenheim/releases/)
 
 ### IOS / Build from source
 
