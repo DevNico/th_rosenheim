@@ -203,8 +203,9 @@ class SplanApi extends BaseApi {
               minutes: int.parse(endTimeParts[1]));
         }
 
-        final room = tooltipStrings[3] ==
-                '${timeRegExpMatch.group(1)}-${timeRegExpMatch.group(2)}'
+        final room = timeRegExpMatch != null &&
+                tooltipStrings[3] ==
+                    '${timeRegExpMatch.group(1)}-${timeRegExpMatch.group(2)}'
             ? ''
             : tooltipStrings[3];
 

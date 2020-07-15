@@ -27,16 +27,17 @@ class EatApi extends BaseApi {
     @required int year,
     @required int week,
   }) async {
-    try {
-      final now = DateTime.now();
-      week = week ?? now.weekOfYear;
+    final now = DateTime.now();
+    week = week ?? now.weekOfYear;
 
-      final response = await dio
-          .get('${year ?? now.year}/${week < 10 ? '0$week' : week}.json');
+    final url = '${year ?? now.year}/${week < 10 ? '0$week' : week}.json';
+
+    try {
+      final response = await dio.get(url);
       final json = await parseJsonInBackground(utf8.decode(response.data));
       return CanteenWeek.fromJson(json);
     } on Exception catch (_) {
-      logger.e('Error getting CanteenWeek from EatApi.');
+      logger.e('Error getting CanteenWeek from EatApi.\n$url');
       return null;
     }
   }

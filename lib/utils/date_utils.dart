@@ -46,8 +46,9 @@ extension DateTimeExtension on DateTime {
   DateTime weekStart() {
     // This is ugly, but to avoid problems with daylight saving
     var monday = DateTime.utc(year, month, day);
-    monday = monday.subtract(Duration(days: monday.weekday - 1));
-
+    if (monday.weekday != DateTime.monday) {
+      monday = monday.subtract(Duration(days: monday.weekday - 1));
+    }
     return monday;
   }
 

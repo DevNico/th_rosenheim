@@ -296,11 +296,12 @@ class _DashboardPageState extends State<DashboardPage> {
                     builder: (context, state) {
                       if (state is! CanteenLoaded ||
                           !(state as CanteenLoaded).canteen.containsKey(i)) {
-                        BlocProvider.of<CanteenBloc>(context)
-                            .add(LoadCanteenWeek(
-                          firstDay: settings.semester.startDate,
-                          weekStart: _selectedDate.weekStart(),
-                        ));
+                        BlocProvider.of<CanteenBloc>(context).add(
+                          LoadCanteenWeek(
+                            firstDay: settings.semester.startDate,
+                            weekStart: _selectedDate.weekStart(),
+                          ),
+                        );
                       }
 
                       if (state is CanteenLoaded) {
@@ -314,7 +315,6 @@ class _DashboardPageState extends State<DashboardPage> {
                       return SizedBox();
                     },
                   ),
-                  SizedBox(height: 20),
                 ],
               );
             },
