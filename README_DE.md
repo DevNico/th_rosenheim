@@ -18,6 +18,7 @@ Die angezeigten Daten sind nicht korrekt und nur zu demonstrationszwecken eingef
 <img src="readme/dashboard_de_dark.png" width="200px" />
 <img src="readme/map_de_dark.png" width="200px" />
 <img src="readme/settings_de_dark.png" width="200px" />
+<img src="readme/lectures_de_dark.png" width="200px" />
 </p>
 
 ### Helles Design
@@ -26,6 +27,7 @@ Die angezeigten Daten sind nicht korrekt und nur zu demonstrationszwecken eingef
 <img src="readme/dashboard_de_light.png" width="200px" />
 <img src="readme/map_de_light.png" width="200px" />
 <img src="readme/settings_de_light.png" width="200px" />
+<img src="readme/lectures_de_light.png" width="200px" />
 </p>
 
 ## Installation

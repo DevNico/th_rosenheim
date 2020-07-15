@@ -18,6 +18,7 @@ The Data shown is not correct and just there for demonstration purposes.
 <img src="readme/dashboard_en_dark.png" width="200px" />
 <img src="readme/map_en_dark.png" width="200px" />
 <img src="readme/settings_en_dark.png" width="200px" />
+<img src="readme/lectures_en_dark.png" width="200px" />
 </p>
 
 ### Light mode
@@ -26,6 +27,7 @@ The Data shown is not correct and just there for demonstration purposes.
 <img src="readme/dashboard_en_light.png" width="200px" />
 <img src="readme/map_en_light.png" width="200px" />
 <img src="readme/settings_en_light.png" width="200px" />
+<img src="readme/lectures_en_light.png" width="200px" />
 </p>
 
 
