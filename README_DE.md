@@ -10,15 +10,19 @@ Die angezeigten Daten sind nicht korrekt und nur zu demonstrationszwecken eingef
 
 ### Dunkles Design
 
+<p float="left">
 <img src="readme/dashboard_de_dark.png" width="200px" />
 <img src="readme/map_de_dark.png" width="200px" />
 <img src="readme/settings_de_dark.png" width="200px" />
+</p>
 
 ### Helles Design
 
+<p float="left">
 <img src="readme/dashboard_de_light.png" width="200px" />
 <img src="readme/map_de_light.png" width="200px" />
 <img src="readme/settings_de_light.png" width="200px" />
+</p>
 
 ## Installation
 
