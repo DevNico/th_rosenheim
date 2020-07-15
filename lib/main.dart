@@ -57,6 +57,7 @@ class _THRosenheimAppState extends State<THRosenheimApp> {
 
           return MaterialApp(
             title: 'TH Rosenheim',
+            debugShowCheckedModeBanner: false,
             localizationsDelegates: [
               TranslationDelegate(
                 newLocale: Locale(settings.locale ?? 'en', ''),
