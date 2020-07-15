@@ -1,5 +1,5 @@
 name: th_rosenheim
-description: Shows a configurable timetable as well as cantine information for the Rosenheim Technical University of Applied Sciences
+description: Displays customizable timetables as well as cantine information for students of the Rosenheim Technical University of Applied Sciences.
 version: 1.0.0+1
 
 environment:
