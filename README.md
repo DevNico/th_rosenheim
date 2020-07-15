@@ -1,9 +1,24 @@
 # Unofficial TH Rosenheim App
 
+Diese Readme ist auch auf [Deutsch](README_DE.md) verfügbar.
+
 This is a Cross-Platform Flutter App that displays customizable timetables as well as cantine information for students of the Rosenheim Technical University of Applied Sciences.
 
-## Overview
+## Screenshots
 
+The Data shown is not correct and just there for demonstration purposes.
+
+### Dark mode
+
+<img src="readme/dashboard_en_dark.png" width="200px" />
+<img src="readme/map_en_dark.png" width="200px" />
+<img src="readme/settings_en_dark.png" width="200px" />
+
+### Light mode
+
+<img src="readme/dashboard_en_light.png" width="200px" />
+<img src="readme/map_en_light.png" width="200px" />
+<img src="readme/settings_en_light.png" width="200px" />
 
 
 ## Installation
@@ -55,3 +70,8 @@ For Android run
 
 Every contribution is very much appreciated. All contributors will get listed below.
 
+This project follows the [all-contributors](https://allcontributors.org/docs/en/overview) specification. Contributions of any kind welcome.
+
+## License
+
+[GPL-3.0 License](LICENSE.md)
