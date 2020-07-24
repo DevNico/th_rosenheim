@@ -3,6 +3,7 @@
 ![Build and Release apk](https://github.com/DevNico/th_rosenheim/workflows/Build%20and%20Release%20apk/badge.svg)
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL3.0-blue.svg)](LICENSE.md)
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://pub.dev/packages/effective_dart)
+<a href="https://github.com/felangel/bloc"><img src="https://tinyurl.com/bloc-library" alt="Bloc Library"></a>
 
 This Readme is also available in [English](README.md).
 
