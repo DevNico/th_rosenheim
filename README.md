@@ -7,7 +7,7 @@
 
 Diese Readme ist auch auf [Deutsch](README_DE.md) verfügbar.
 
-This is a Cross-Platform Flutter App that displays customizable timetables as well as cantine information for students of the Rosenheim Technical University of Applied Sciences.
+This is a Cross-Platform Flutter App that displays customizable timetables as well as canteen information for students of the Rosenheim Technical University of Applied Sciences.
 
 ## Screenshots
 
