@@ -71,11 +71,11 @@ Make sure your phone is connected and ready. For Android USB Debugging has to be
 
 For IOS run
 
-`$ flutter build ios --release && flutter install ios`
+`$ flutter build ios --release --no-tree-shake-icons && flutter install ios`
 
 For Android run
 
-`$ flutter build apk --release && flutter install apk`
+`$ flutter build apk --release --no-tree-shake-icons && flutter install apk`
 
 ## Contributing
 
